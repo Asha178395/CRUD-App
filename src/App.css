@@ -1,0 +1,64 @@
+
+button
+{
+  border-radius: 10px;
+  cursor: pointer;
+  color:white;
+  height: 35px;
+  padding:5px;
+}
+
+.employee-form-control
+{
+float: left;
+width: 75%;
+}
+
+input[type=text] {
+width: 95%;
+padding: 12px;
+}
+
+.employee-form-label{
+float: left;
+width: 25%;
+margin-top: 12px;
+}
+
+.button-background-color{
+  background-color: #183841;
+  color: #eee;
+  border-radius: 5px;
+  padding: 6px 6px;
+  font-size: 15px;
+  padding: 5px;
+}
+.add-project-col::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.displayemployee{
+  border:1px solid black;
+  margin-right:200px;
+  margin-left:200px;
+  margin-bottom:5px;
+}
+.deleteicon{
+ font-size:30px;
+ color:red; 
+}
+.addicon{
+  background-color:black;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  margin-left:30px;
+ 
+}
+.updateicon{
+  font-size:30px;
+  color:grey; 
+ }
+
+
