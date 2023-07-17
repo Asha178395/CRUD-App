@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useEmployeesQuery} from '../services/employeesApi';
 import { UpdateEmployee } from './UpdateEmployee';
 import { DeleteEmployee } from './DeleteEmployee';
@@ -20,8 +19,8 @@ export const DisplayEmployee=()=>{
               <p ><b>Employee Age:</b>{employee.age}</p>
               <p ><b>Employee Salary:</b>{employee.salary}</p>
               <p ><b>Employee Department:</b>{employee.department}</p>
-              <div style={{display:'flex',gap:'10px',justifyContent:'center',marginBottom:'5px'}}>
-              <UpdateEmployee employee={employee}/>
+              <div className='componentsalign'>
+              <UpdateEmployee employee={employee} />
               <DeleteEmployee id={employee.id}/>
               </div>
             </div> 

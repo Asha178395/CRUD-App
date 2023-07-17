@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { useDeleteEmployeeMutation } from '../services/employeesApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';

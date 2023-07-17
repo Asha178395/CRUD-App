@@ -13,10 +13,11 @@ type Employee={
 }
 interface UpdateEmployeeProps {
     employee: Employee;
+    
   }
   
 
-export const UpdateEmployee: React.FC<UpdateEmployeeProps> = ({ employee })  => {
+export const UpdateEmployee:React.FC<UpdateEmployeeProps> = ({ employee}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [updatedEmployee, setUpdatedEmployee] = useState<Employee>({
     id: employee.id,
@@ -51,7 +52,7 @@ export const UpdateEmployee: React.FC<UpdateEmployeeProps> = ({ employee })  => 
 
         handleCloseModal();
       })
-      .catch((error) => {
+      .catch((error:any) => {
         console.error(error);
       });
   };
@@ -68,12 +69,13 @@ export const UpdateEmployee: React.FC<UpdateEmployeeProps> = ({ employee })  => 
           <form onSubmit={handleSubmit}>
             <div className="add-employee-col">
               <div className="employee-form-label">
-                <label>Employee Name</label>
+                <label htmlFor='employeeName'>Employee Name</label>
               </div>
               <div className="employee-form-control">
                 <input
                   type="text"
                   name="name"
+                  id='employeeName'
                   value={updatedEmployee.name}
                   onChange={handleInputChange}
                   className='ml-1'
@@ -82,12 +84,13 @@ export const UpdateEmployee: React.FC<UpdateEmployeeProps> = ({ employee })  => 
             </div>
             <div className="add-employee-col">
               <div className="employee-form-label">
-                <label>Department</label>
+                <label htmlFor='department'>Department</label>
               </div>
               <div className="employee-form-control">
                 <input
                   type="text"
                   name="department"
+                  id='department'
                   value={updatedEmployee.department}
                   onChange={handleInputChange}
                   className='ml-1'
@@ -96,12 +99,13 @@ export const UpdateEmployee: React.FC<UpdateEmployeeProps> = ({ employee })  => 
             </div>
             <div className="add-employee-col">
               <div className="employee-form-label">
-                <label>Salary</label>
+                <label htmlFor='salary'>Salary</label>
               </div>
               <div className="employee-form-control">
                 <input
                   type="text"
                   name="salary"
+                  id='salary'
                   value={updatedEmployee.salary}
                   onChange={handleInputChange}
                   className='ml-1'
@@ -110,12 +114,13 @@ export const UpdateEmployee: React.FC<UpdateEmployeeProps> = ({ employee })  => 
             </div>
             <div className="add-employee-col">
               <div className="employee-form-label">
-                <label>Age</label>
+                <label htmlFor='age'>Age</label>
               </div>
               <div className="employee-form-control">
                 <input
                   type="text"
                   name="age"
+                  id='age'
                   value={updatedEmployee.age}
                   onChange={handleInputChange}
                   className='ml-1'
