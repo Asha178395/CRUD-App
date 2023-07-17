@@ -13,6 +13,7 @@ test('renders the Add Employee component', () => {
     
 
   });
+  //checking wether add icon can be clickebale or not
   test('checking button can be clicked or not', () => {
     const addEmployeeMock = jest.fn();
      render(
