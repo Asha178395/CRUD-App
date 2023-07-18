@@ -1,5 +1,5 @@
-export interface Employee {
-    "id": number,
+export interface IEmployeenoid {
+    
     "name": string,
     "age": number,
     "department": string,

@@ -1,5 +1,5 @@
 import { render, waitFor, screen } from '@testing-library/react';
-import { DisplayEmployee } from './DisplayEmployee';
+import { DisplayEmployee } from '../Components/DisplayEmployee';
 import { store } from '../store';
 import { Provider } from 'react-redux';
 
@@ -18,7 +18,7 @@ describe('DisplayEmployee', () => {
     });
     require('../services/employeesApi').useEmployeesQuery = mockUseEmployeesQuery;
 
-    render(<DisplayEmployee />);
+    render(<Provider store={store}><DisplayEmployee /></Provider>);
 
     expect(screen.getByText('...Loading')).toBeInTheDocument();
   });
@@ -31,7 +31,7 @@ describe('DisplayEmployee', () => {
     });
     require('../services/employeesApi').useEmployeesQuery = mockUseEmployeesQuery;
 
-    render(<DisplayEmployee />);
+    render(<Provider store={store}><DisplayEmployee /></Provider>);
 
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
   });
@@ -44,7 +44,7 @@ describe('DisplayEmployee', () => {
     });
     require('../services/employeesApi').useEmployeesQuery = mockUseEmployeesQuery;
 
-    render(<DisplayEmployee />);
+    render(<Provider store={store}><DisplayEmployee /></Provider>);
 
     expect(screen.getByText('...isFetching')).toBeInTheDocument();
   });

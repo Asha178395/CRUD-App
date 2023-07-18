@@ -1,46 +1,44 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { UpdateEmployee } from './UpdateEmployee';
 import { Provider } from 'react-redux';
 import { store } from '../store';
-
+import { EmployeeForm } from '../Components/EmployeeForm';
 
 describe('UpdateEmployee', () => {
-    const employee = {
-      id: 1,
-      name: 'John Doe',
-      department: 'IT',
-      salary: 5000,
-      age: 30,
-    };
+  const employee = {
+    id: 1,
+    name: 'John Doe',
+    department: 'IT',
+    salary: 5000,
+    age: 30,
+  };
 
-test('renders the Update Employee component', () => {
-  const updateEmployeeMock = jest.fn();
-  render(
-   
-    <Provider store={store}>
-      <UpdateEmployee employee={employee}/>
-    </Provider>
-  );
+  test('renders the Update Employee component', () => {
+    const updateEmployeeMock = jest.fn();
+    render(
+      <Provider store={store}>
+        <EmployeeForm employee={employee} onSubmit={updateEmployeeMock} />
+      </Provider>
+    );
 
-  const functionElement = jest.fn();
-  const updateIconElement = screen.getByTestId('update-icon');
-  updateIconElement.onclick = functionElement;
+    const functionElement = jest.fn();
+    const updateIconElement = screen.getByTestId('update-icon');
+    updateIconElement.onclick = functionElement;
 
-  fireEvent.click(updateIconElement);
-  expect(functionElement).toBeCalled();
-});
+    fireEvent.click(updateIconElement);
+    expect(functionElement).toBeCalled();
+  });
 
   test('opens the modal and interacts with inputs and labels', () => {
     render(
       <Provider store={store}>
-        <UpdateEmployee employee={employee} />
+        <EmployeeForm employee={employee} onSubmit={jest.fn()} />
       </Provider>
     );
 
     const updateIconElement = screen.getByTestId('update-icon');
-    fireEvent.click(updateIconElement); 
+    fireEvent.click(updateIconElement);
 
-    const nameLabel = screen.getByLabelText('Employee Name');
+    const nameLabel = screen.getByLabelText('Name');
     const departmentLabel = screen.getByLabelText('Department');
     const salaryLabel = screen.getByLabelText('Salary');
     const ageLabel = screen.getByLabelText('Age');
@@ -50,7 +48,6 @@ test('renders the Update Employee component', () => {
     const salaryInput = screen.getByDisplayValue('5000');
     const ageInput = screen.getByDisplayValue('30');
 
-  
     fireEvent.change(nameInput, { target: { value: 'Jane Doe' } });
     fireEvent.change(departmentInput, { target: { value: 'Marketing' } });
     fireEvent.change(salaryInput, { target: { value: '6000' } });
@@ -66,5 +63,4 @@ test('renders the Update Employee component', () => {
     expect(salaryInput).toHaveValue('6000');
     expect(ageInput).toHaveValue('32');
   });
-
 });

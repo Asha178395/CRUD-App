@@ -1,21 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Employee} from '../models/employee.model';
-import { Employeenoid} from '../models/employeenoid.model';
+import { IEmployee} from '../models/employee.model';
+import { IEmployeenoid} from '../models/employeeWithNoId.model';
 
 export const employeesApi = createApi({
     reducerPath: "employeesApi",
     baseQuery: fetchBaseQuery({ baseUrl: "https://crudapp123.azurewebsites.net/api/Employee/" }),
-    tagTypes:['Employee'],
+    tagTypes:['IEmployee'],
     endpoints:(builder) => ({
-        employees: builder.query<Employee[], void>({
+        employees: builder.query<IEmployee[], void>({
             query: () => `/GetAllEmployees`,
-            providesTags:['Employee']
+            providesTags:['IEmployee']
         }),
-        employee: builder.query<Employee, number>({
+        employee: builder.query<IEmployee, number>({
             query: (empId) => `/GetEmployeeById?empid=${empId}`,
-            providesTags:['Employee']
+            providesTags:['IEmployee']
         }),
-        addEmployee: builder.mutation<void, Employeenoid>({            
+        addEmployee: builder.mutation<void, IEmployeenoid>({            
             query:(employeenoid)=>({
                 url:`/AddEmployee`,
                 method:'POST',
@@ -24,15 +24,15 @@ export const employeesApi = createApi({
                     "Content-type": "application/json; charset=UTF-8",
                   },
             }),
-            invalidatesTags:['Employee']
+            invalidatesTags:['IEmployee']
         }),
-        updateEmployee: builder.mutation<Boolean, Employee>({
+        updateEmployee: builder.mutation<Boolean, IEmployee>({
             query:employee=>({
                 url:`/UpdateentireEmployee`,
                 method:'PUT',
                 body:employee
             }),
-            invalidatesTags:['Employee'],
+            invalidatesTags:['IEmployee'],
         }),
         deleteEmployee: builder.mutation<void, number>({
             query:(empId)=>({
@@ -40,7 +40,7 @@ export const employeesApi = createApi({
                 method:'DELETE',
                 
             }),
-            invalidatesTags:['Employee'],
+            invalidatesTags:['IEmployee'],
         }),
     })
 })
