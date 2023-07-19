@@ -5,23 +5,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useUpdateEmployeeMutation } from '../services/employeesApi';
 import { useAddEmployeeMutation } from '../services/employeesApi';
+import { IEmployee,EmployeeFormProps } from '../types';
 
-type Employee = {
-  id: number;
-  name: string;
-  department: string;
-  salary: number;
-  age: number;
-};
+// type Employee = {
+//   id: number;
+//   name: string;
+//   department: string;
+//   salary: number;
+//   age: number;
+// };
 
-type EmployeeFormProps = {
-  employee?: Employee;
-  onSubmit: (employee: Employee) => void;
-};
+// type EmployeeFormProps = {
+//   employee?: Employee;
+//   onSubmit: (employee: Employee) => void;
+// };
 
 export const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState<Employee>({
+  const [formData, setFormData] = useState<IEmployee>({
     id: employee?.id || 0,
     name: employee?.name || '',
     department: employee?.department || '',
@@ -34,11 +35,8 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }
   
 
   const handleOpenModal = () => {
-    if (employee) {
-        // Editing an existing employee
-        
         setIsOpen(true);
-      } else {
+      if(!employee) {
         // Adding a new employee
         setFormData({
           id: 0,
@@ -47,14 +45,13 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }
           salary: 0,
           age: 0
         });
-        setIsOpen(true);
       }
   };
 
   const handleCloseModal = () => {
+    setIsOpen(false); 
     if (isEdited && employee) {
-    
-        setFormData({
+     setFormData({
           id: employee.id,
           name: employee.name,
           department: employee.department,
@@ -63,9 +60,7 @@ export const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }
         });
         setIsEdited(false);
       }
-      setIsOpen(false);
-    
-   
+      
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
