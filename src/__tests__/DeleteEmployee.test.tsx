@@ -5,7 +5,7 @@ import {store} from '../store'
 import { Provider } from 'react-redux';
 
 
-describe('DisplayEmployee', () => {
+describe('DeleteEmployee', () => {
   
   test('calls useDeleteEmployeeMutation when trash icon is clicked', () => {
     const deleteEmployeeMock = jest.fn();

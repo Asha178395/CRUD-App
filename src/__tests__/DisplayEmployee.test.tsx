@@ -46,7 +46,7 @@ describe('DisplayEmployee', () => {
 
     render(<Provider store={store}><DisplayEmployee /></Provider>);
 
-    expect(screen.getByText('...isFetching')).toBeInTheDocument();
+    expect(screen.getByText('...Fetching')).toBeInTheDocument();
   });
 
 

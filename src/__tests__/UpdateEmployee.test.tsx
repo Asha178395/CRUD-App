@@ -29,9 +29,10 @@ describe('UpdateEmployee', () => {
   });
 
   test('opens the modal and interacts with inputs and labels', () => {
+    const onsubmit=jest.fn();
     render(
       <Provider store={store}>
-        <EmployeeForm employee={employee} onSubmit={jest.fn()} />
+        <EmployeeForm employee={employee} onSubmit={onsubmit} />
       </Provider>
     );
 
@@ -42,6 +43,7 @@ describe('UpdateEmployee', () => {
     const departmentLabel = screen.getByLabelText('Department');
     const salaryLabel = screen.getByLabelText('Salary');
     const ageLabel = screen.getByLabelText('Age');
+    const updateButton = screen.getByText('Update');
 
     const nameInput = screen.getByDisplayValue('John Doe');
     const departmentInput = screen.getByDisplayValue('IT');
@@ -62,5 +64,13 @@ describe('UpdateEmployee', () => {
     expect(departmentInput).toHaveValue('Marketing');
     expect(salaryInput).toHaveValue('6000');
     expect(ageInput).toHaveValue('32');
+    // fireEvent.click(updateButton)
+    // expect(onsubmit).toHaveBeenCalledWith({
+    //   "id":1,
+    //   "name": 'John Doe',
+    //   "age": 32,
+    //   "department": 'Marketing',
+    //   "salary": 6000
+    // });
   });
 });

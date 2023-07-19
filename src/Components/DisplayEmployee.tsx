@@ -1,22 +1,12 @@
 import { useEmployeesQuery } from '../services/employeesApi';
 import { useSelector } from 'react-redux';
-import { IEmployee } from '../models/employee.model';
+import { IEmployee,stateprops } from '../types';
 import { EmployeeForm } from './EmployeeForm';
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useDeleteEmployeeMutation } from '../services/employeesApi';
 
-type stateprops = {
-  employees: emptype;
-};
-
-type emptype = {
-  employees: IEmployee[];
-
-  isLoading: boolean;
-  error: string | null | undefined;
-};
 
 
 export const DisplayEmployee = () => {
@@ -36,7 +26,7 @@ export const DisplayEmployee = () => {
     <div>
          <EmployeeForm onSubmit={handleSubmit} />
       {isLoading && <h2>...Loading</h2>}
-      {isFetching && <h2>...isFetching</h2>}
+      {isFetching && <h2>...Fetching</h2>}
       {error && <h2>Something went wrong</h2>}
       {isSuccess && (
         <div>

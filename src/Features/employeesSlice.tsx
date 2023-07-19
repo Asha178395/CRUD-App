@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { employeesApi } from '../services/employeesApi';
-import { IEmployee } from '../models/employee.model';
+import {emptype } from '../types';
 
-interface EmployeesState {
-  employees: IEmployee[];
-  
-  isLoading: boolean;
-  error: string | null | undefined; // Update the type annotation to allow undefined
-}
 
-const initialState: EmployeesState = {
+const initialState: emptype = {
   employees: [],
 
   isLoading: false,

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IEmployee} from '../models/employee.model';
-import { IEmployeenoid} from '../models/employeeWithNoId.model';
+import { IEmployee,IEmployeenoid} from '../types';
+
 
 export const employeesApi = createApi({
     reducerPath: "employeesApi",
