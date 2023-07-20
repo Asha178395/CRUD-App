@@ -7,18 +7,6 @@ import { useUpdateEmployeeMutation } from '../services/employeesApi';
 import { useAddEmployeeMutation } from '../services/employeesApi';
 import { IEmployee,EmployeeFormProps } from '../types';
 
-// type Employee = {
-//   id: number;
-//   name: string;
-//   department: string;
-//   salary: number;
-//   age: number;
-// };
-
-// type EmployeeFormProps = {
-//   employee?: Employee;
-//   onSubmit: (employee: Employee) => void;
-// };
 
 export const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
